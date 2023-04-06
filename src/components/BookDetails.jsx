@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import { useLoaderData, useNavigation } from 'react-router-dom'
+import LoadingSpinner from './LoadingSpinner.jsx';
 
 const BookDetails = () => {
-    
+  const isloading = useNavigation();
+  if(isloading.state === 'loading'){
+      return <LoadingSpinner></LoadingSpinner>
+  };
   const bookData = useLoaderData()
   const [fold, setFold] = useState(true)
   console.log(bookData)
